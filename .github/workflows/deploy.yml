@@ -46,7 +46,18 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-deps-
 
+      - name: Check if only config changed
+        id: check-changes
+        run: |
+          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q -v "^public/config\.js$"; then
+            echo "needs_build=true" >> $GITHUB_OUTPUT
+          else
+            echo "needs_build=false" >> $GITHUB_OUTPUT
+          fi
+        continue-on-error: true
+
       - name: Install dependencies
+        if: steps.check-changes.outputs.needs_build == 'true'
         run: yarn install --frozen-lockfile --prefer-offline
 
       - name: Extract repository name
@@ -63,8 +74,16 @@ jobs:
             echo "No custom domain configured"
           fi
 
+      - name: Restore previous build (if only config changed)
+        if: steps.check-changes.outputs.needs_build == 'false'
+        uses: actions/cache/restore@v4
+        with:
+          path: ./build
+          key: ${{ runner.os }}-build-${{ github.repository }}-latest
+        continue-on-error: true
+
       - name: Build with repository base path
-        if: ${{ steps.check-custom-domain.outputs.has_custom_domain == 'false' }}
+        if: ${{ steps.check-custom-domain.outputs.has_custom_domain == 'false' && steps.check-changes.outputs.needs_build == 'true' }}
         run: yarn build:spa
         env:
           # Set the base path for GitHub Pages using repo name
@@ -74,13 +93,26 @@ jobs:
           VITE_BASE_URL: /${{ env.REPO_NAME }}
 
       - name: Build with root base path (for custom domain)
-        if: ${{ steps.check-custom-domain.outputs.has_custom_domain == 'true' }}
+        if: ${{ steps.check-custom-domain.outputs.has_custom_domain == 'true' && steps.check-changes.outputs.needs_build == 'true' }}
         run: yarn build:spa
         env:
           # For custom domains, use root path
           PUBLIC_PATH: /
           VITE_PUBLIC_PATH: /
           VITE_BASE_URL: ""
+
+      - name: Copy updated config to build (if using cached build)
+        if: steps.check-changes.outputs.needs_build == 'false'
+        run: |
+          cp public/config.js ./build/client/config.js
+          echo "✅ Updated config.js copied to build output"
+
+      - name: Cache build artifacts
+        if: steps.check-changes.outputs.needs_build == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ./build
+          key: ${{ runner.os }}-build-${{ github.repository }}-${{ github.sha }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
