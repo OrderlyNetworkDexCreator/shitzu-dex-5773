@@ -17,7 +17,7 @@ window.__RUNTIME_CONFIG__ = {
   "VITE_APP_DESCRIPTION": "A powerful perpetual trading DEX powered by Orderly Network",
   "VITE_HAS_PRIMARY_LOGO": "true",
   "VITE_HAS_SECONDARY_LOGO": "true",
-  "VITE_ENABLED_MENUS": "Trading,Portfolio,Markets,Rewards,Leaderboard",
+  "VITE_ENABLED_MENUS": "Trading,Portfolio,Markets,Rewards,Leaderboard,Vaults",
   "VITE_CUSTOM_MENUS": "🐶 Website, https://shitzuapes.xyz; 💩 App, https://app.shitzuapes.xyz",
   "VITE_ENABLE_CAMPAIGNS": "true",
   "VITE_TELEGRAM_URL": "https://t.me/Shitzu_Community",
