@@ -1,6 +1,7 @@
 window.__RUNTIME_CONFIG__ = {
   "VITE_ORDERLY_BROKER_ID": "shitzu",
   "VITE_ORDERLY_BROKER_NAME": "Shitzu DEX",
+  "VITE_BROKER_EOA_ADDRESS": "0xd51c5283b8727206bf9be2b2db4e5673efaf519c",
   "VITE_DISABLE_MAINNET": "false",
   "VITE_DISABLE_TESTNET": "false",
   "VITE_ORDERLY_MAINNET_CHAINS": "1329,80094,1514,146,43114,5000,2818,34443,2741,98866,1,900900900,42161,8453,10,56",
@@ -19,6 +20,7 @@ window.__RUNTIME_CONFIG__ = {
   "VITE_HAS_SECONDARY_LOGO": "true",
   "VITE_ENABLED_MENUS": "Trading,Swap,Portfolio,Markets,Rewards,Leaderboard,Vaults",
   "VITE_CUSTOM_MENUS": "🐶 App, https://app.shitzuapes.xyz",
+  "VITE_ENABLE_SERVICE_DISCLAIMER_DIALOG": "false",
   "VITE_ENABLE_CAMPAIGNS": "false",
   "VITE_TELEGRAM_URL": "https://t.me/Shitzu_Community",
   "VITE_DISCORD_URL": "",
@@ -32,7 +34,8 @@ window.__RUNTIME_CONFIG__ = {
   "VITE_SEO_THEME_COLOR": "#000000",
   "VITE_SEO_KEYWORDS": "dex,crypto,defi,perpetual,perps,shitzu",
   "VITE_AVAILABLE_LANGUAGES": "en,de,fr,zh,ja,es,vi,ko,ru,pt,uk,id,tr,pl,nl,it",
-  "VITE_USE_CUSTOM_PNL_POSTERS": "true",
-  "VITE_CUSTOM_PNL_POSTER_COUNT": "2",
-  "VITE_TRADING_VIEW_COLOR_CONFIG": ""
+  "VITE_USE_CUSTOM_PNL_POSTERS": "false",
+  "VITE_CUSTOM_PNL_POSTER_COUNT": "0",
+  "VITE_TRADING_VIEW_COLOR_CONFIG": "",
+  "VITE_ANALYTICS_SCRIPT": ""
 };
