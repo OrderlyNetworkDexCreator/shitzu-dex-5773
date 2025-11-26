@@ -33,7 +33,7 @@ window.__RUNTIME_CONFIG__ = {
   "VITE_SEO_TWITTER_HANDLE": "@shitzuonnear",
   "VITE_SEO_THEME_COLOR": "#000000",
   "VITE_SEO_KEYWORDS": "dex,crypto,defi,perpetual,perps,shitzu",
-  "VITE_AVAILABLE_LANGUAGES": "en,de,fr,zh,ja,es,vi,ko,ru,pt,uk,id,tr,pl,nl,it",
+  "VITE_AVAILABLE_LANGUAGES": "en,de,fr,zh,ja,es,vi,ko,ru,pt,uk,id,tr,pl,nl,it,tc",
   "VITE_USE_CUSTOM_PNL_POSTERS": "true",
   "VITE_CUSTOM_PNL_POSTER_COUNT": "2",
   "VITE_TRADING_VIEW_COLOR_CONFIG": "",
